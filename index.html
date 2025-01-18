@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yarn and Charm Knit Knot</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      overflow-x: hidden;
+      color: black;
+      background-color: #F0F8FF;
+    }
+
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #FFB6C1;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      padding: 15px 10px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      color: black;
+      font-weight: bold;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .more-btn {
+      background: none;
+      border: none;
+      cursor: pointer;
+      position: absolute;
+      right: 60px;
+      top: 20px;
+      width: 50px;
+      height: 30px;
+    }
+
+    .more-btn img {
+      width: 100%;
+      height: 100%;
+    }
+
+    .dropdown {
+      position: absolute;
+      right: 30px;
+      top: 50px;
+      background-color: #FFB6C1;
+      min-width: 150px;
+      border-radius: 8px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+      z-index: 10;
+      opacity: 0;
+      transform: translateY(-10px);
+      visibility: hidden;
+      transition: opacity 0.3s ease, transform 0.3s ease, visibility 0s ease 0.3s;
+    }
+
+    .dropdown.show {
+      opacity: 1;
+      transform: translateY(0);
+      visibility: visible;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    .dropdown a {
+      color: black;
+      padding: 10px;
+      display: block;
+      text-decoration: none;
+    }
+
+    .dropdown a:hover {
+      background-color: #FF6F61;
+    }
+
+    nav {
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: black;
+      margin: 0 20px;
+      font-weight: bold;
+      font-size: 1.1rem;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #FF6F61;
+    }
+
+    section.hero {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #D3D3D3;
+      text-align: center;
+      animation: fadeIn 1.5s ease-in-out;
+      color: black;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    section.services {
+      padding: 50px;
+      background-color: #FFFFFF;
+      text-align: center;
+    }
+
+    section.services div.service {
+      margin: 20px auto;
+      padding: 20px;
+      border-radius: 10px;
+      width: 80%;
+      max-width: 500px;
+      background: linear-gradient(135deg, #FFB6C1, #F0F8FF);
+      color: black;
+      cursor: pointer;
+      transition: transform 0.4s ease-in-out;
+    }
+
+    section.services div.service:hover {
+      transform: scale(1.05);
+    }
+
+    footer {
+      background: #FF6F61;
+      color: black;
+      padding: 10px 20px;
+      text-align: center;
+    }
+
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+      }
+
+      .more-btn {
+        display: block;
+      }
+
+      header {
+        padding: 15px 20px;
+      }
+
+      .dropdown {
+        position: static;
+        min-width: 100%;
+      }
+
+      .dropdown a {
+        padding: 15px;
+      }
+    }
+  </style>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const moreBtn = document.querySelector('.more-btn');
+      const dropdown = document.querySelector('.dropdown');
+      const searchLink = document.querySelector('a[href="javascript:void(0);"][onclick="navigate(\'search\')"]');
+
+      moreBtn.addEventListener('click', () => {
+        dropdown.classList.toggle('show');
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!dropdown.contains(e.target) && !moreBtn.contains(e.target)) {
+          dropdown.classList.remove('show');
+        }
+      });
+
+      // Temporarily disable the Search link
+      const disableSearchLink = () => {
+        searchLink.style.pointerEvents = 'none';
+        searchLink.style.color = 'gray';
+      };
+
+      const enableSearchLink = () => {
+        searchLink.style.pointerEvents = 'auto';
+        searchLink.style.color = 'black';
+      };
+
+      // Automatically re-enable the "Search" link after 5 seconds
+      let searchTimeout;
+      const setSearchTimeout = () => {
+        disableSearchLink();
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(enableSearchLink, 5000);
+      };
+
+      searchLink.addEventListener('click', setSearchTimeout);
+    });
+
+    function navigate(section) {
+      if (section === 'aboutUs') {
+        window.location.href = 'about.html';
+      } else if (section === 'reachUs') {
+        window.location.href = 'contact.html';
+      } else if (section === 'search') {
+        window.location.href = 'search.html';
+      } else if (section === 'headwear') {
+        window.location.href = 'headwear.html';
+      } else if (section === 'accessories') {
+        window.location.href = 'accessories.html';
+      } else if (section === 'tableDecor') {
+        window.location.href = 'table_decor.html';
+      } else if (section === 'bags') {
+        window.location.href = 'bags.html';
+      } else if (section === 'miniPlushies') {
+        window.location.href = 'mini_plushies.html';
+      } else if (section === 'specialOrder') {
+        window.location.href = 'special_order.html';
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Yarn and Charm Knit Knot</div>
+    
+
+    <!-- Hamburger Icon as Image -->
+    <button class="more-btn">
+      <img src="https://th.bing.com/th/id/OIP.qZRZSyluyd1RoPYJlKSpegHaHa?w=182&h=182&c=7&r=0&o=5&pid=1.7" alt="Menu">
+    </button>
+
+    <!-- Dropdown Menu -->
+    <div class="dropdown">
+      <a href="javascript:void(0);" onclick="navigate('aboutUs')">About Us</a>
+      <a href="javascript:void(0);" onclick="navigate('reachUs')">Reach Us</a>
+      <a href="javascript:void(0);" onclick="navigate('search')">Search</a>
+    </div>
+
+    <nav>
+      <!-- Updated Services Navigation -->
+      <a href="javascript:void(0);" onclick="navigate('headwear')">Headwear</a>
+      <a href="javascript:void(0);" onclick="navigate('accessories')">Accessories</a>
+      <a href="javascript:void(0);" onclick="navigate('tableDecor')">Table Decor</a>
+      <a href="javascript:void(0);" onclick="navigate('bags')">Bags</a>
+      <a href="javascript:void(0);" onclick="navigate('miniPlushies')">Mini Plushies</a>
+      <a href="javascript:void(0);" onclick="navigate('specialOrder')">Special Order</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Welcome to Yarn & Charm Knit Knot</h1>
+    <p>Beautiful Handmade Crochet Flowers, Animals, and More!</p>
+  </section>
+
+  <section id="services" class="services">
+    <h2>Our Services</h2>
+    <div class="service" onclick="navigate('headwear')">
+      <h3>Headwear</h3>
+      <p>Explore our unique and beautiful hand-crocheted headwear.</p>
+    </div>
+    <div class="service" onclick="navigate('accessories')">
+      <h3>Accessories</h3>
+      <p>Find the perfect crochet accessories for any occasion.</p>
+    </div>
+    <div class="service" onclick="navigate('tableDecor')">
+      <h3>Table Decor</h3>
+      <p>Handcrafted crochet designs for decorating your table.</p>
+    </div>
+    <div class="service" onclick="navigate('bags')">
+      <h3>Bags</h3>
+      <p>Browse our handmade crochet bags.</p>
+    </div>
+    <div class="service" onclick="navigate('miniPlushies')">
+      <h3>Mini Plushies</h3>
+      <p>Adorable crocheted mini plushies perfect for gifting.</p>
+    </div>
+    <div class="service" onclick="navigate('specialOrder')">
+      <h3>Special Order</h3>
+      <p>Request a custom-made crochet piece designed just for you!</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Yarn & Charm Knit Knot. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>

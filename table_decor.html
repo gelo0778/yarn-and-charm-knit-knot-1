@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Handcrafted Yarn Items | Yarn and Charm</title>
+
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #F5F5F5;
+      color: #333;
+      margin: 0;
+    }
+
+    header {
+      background-color: #FF6F61;
+      padding: 20px 40px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 2.5rem;
+      color: white;
+      font-weight: bold;
+    }
+
+    .service-title {
+      font-size: 2.5rem;
+      color: #FF6F61;
+      margin-top: 40px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .service-container {
+      display: flex;
+      justify-content: space-between;
+      margin: 40px 20px;
+      padding: 20px 40px;
+      background-color: #fff;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      border-radius: 10px;
+    }
+
+    .description-column {
+      width: 45%;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+    }
+
+    .images-column {
+      width: 45%;
+      padding: 20px;
+      background-color: #fff;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      border-radius: 8px;
+    }
+
+    .price {
+      font-size: 1.3rem;
+      color: #333;
+      margin: 10px 0;
+    }
+
+    .description {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 20px;
+    }
+
+    .product-photo {
+      width: 90%;
+      height: auto;
+      object-fit: cover;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 15px;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .product-photo.enlarged {
+      transform: scale(1.2);
+      opacity: 1;
+    }
+
+    .image-selection {
+      margin-bottom: 10px;
+    }
+
+    .quantity-container {
+      margin-top: 20px;
+      display: flex;
+      align-items: center;
+    }
+
+    .quantity-label {
+      margin-right: 10px;
+    }
+
+    .quantity-input {
+      width: 60px;
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      font-size: 1rem;
+    }
+
+    .buttons-container {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 12px 20px;
+      background-color: #FF6F61;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background-color 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #FF4D3A;
+    }
+
+    .view-cart-button {
+      margin-top: 20px;
+      padding: 12px 20px;
+      background-color: #FF6F61;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .view-cart-button:hover {
+      background-color: #FF4D3A;
+    }
+
+    footer {
+      background-color: #FF6F61;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      position: relative;
+      bottom: 0;
+      width: 100%;
+      font-size: 1rem;
+    }
+
+    #cart-message {
+      color: green;
+      font-weight: bold;
+      margin-top: 10px;
+      display: none;
+    }
+
+    div label {
+      font-size: 1.1rem;
+      color: #333;
+      display: block;
+      margin-bottom: 12px;
+    }
+
+    .product-selection-container {
+      padding: 20px;
+      margin-top: 20px;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    h3 {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: #FF6F61;
+    }
+
+    .select-dropdown {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      font-size: 1rem;
+    }
+
+    .return-home-button {
+      display: block;
+      margin: 40px auto;
+      background-color: #FF6F61;
+      color: white;
+      padding: 12px 30px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 50px; /* Soft round edges */
+      text-align: center;
+      text-decoration: none;
+      cursor: pointer;
+      width: 220px;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Light shadow */
+      transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+    }
+
+    .return-home-button:hover {
+      background-color: #FF4D3A; /* Slightly darker for hover effect */
+      transform: scale(1.05); /* Slightly enlarge the button */
+    }
+
+    .return-home-button:active {
+      background-color: #FF3B2A; /* Darker shade on button click */
+      transform: scale(1); /* Reset scale on click */
+    }
+
+  </style>
+  <script>
+    function addToCart() {
+      const quantity = document.getElementById("quantity").value;
+      const productType = document.getElementById("product-type").value;
+
+      if (!productType) {
+        alert("Please select a product type.");
+        return;
+      }
+
+      const item = {
+        name: productType,
+        price: "₱130",
+        quantity: parseInt(quantity),
+      };
+
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+      // Check if item already exists in the cart
+      const existingItemIndex = cart.findIndex(cartItem => cartItem.name === item.name);
+
+      if (existingItemIndex !== -1) {
+        // If item exists, update quantity
+        cart[existingItemIndex].quantity += item.quantity;
+      } else {
+        // If item doesn't exist, add it to the cart
+        cart.push(item);
+      }
+
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      const message = document.getElementById("cart-message");
+      message.style.display = "block";
+      setTimeout(() => message.style.display = "none", 2000);
+    }
+
+    function buyNow() {
+      addToCart();
+      window.location.href = "confirmation.html";
+    }
+
+    function viewCart() {
+      window.location.href = "cart.html";
+    }
+
+    function updateImage() {
+      const selectedType = document.getElementById('product-type').value;
+      const images = document.querySelectorAll('.product-photo');
+      
+      // Remove the enlargement effect from all images
+      images.forEach(img => {
+        img.classList.remove('enlarged');
+      });
+
+      // Find the matching image and add the enlarged effect
+      const selectedImage = document.querySelector(`.product-photo[data-type="${selectedType}"]`);
+      if (selectedImage) {
+        selectedImage.classList.add('enlarged');
+      }
+    }
+  </script>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Yarn and Charm Knit Knot</div>
+  </header>
+
+  <h1 class="service-title">Handcrafted Yarn Items</h1>
+
+  <section class="service-container">
+    <div class="description-column">
+      <h2>Custom Yarn Products</h2>
+      <div class="price">₱130</div>
+      <p class="description">
+        Discover our collection of handcrafted yarn items, including cozy placemats, decorative coasters, and beautiful yarn centerpieces. Each item is carefully crafted with love, adding a unique touch to your home.
+      </p>
+
+      <h3>Choose Your Product Type</h3>
+      <select id="product-type" class="select-dropdown" onchange="updateImage()">
+        <option value="">Select a product</option>
+        <option value="Knitted Placemats">Knitted Placemats</option>
+        <option value="Decorative Coasters">Decorative Coasters</option>
+        <option value="Yarn Centerpieces">Yarn Centerpieces</option>
+      </select>
+
+      <div class="quantity-container">
+        <label for="quantity" class="quantity-label">Quantity:</label>
+        <input id="quantity" type="number" value="1" class="quantity-input" min="1">
+      </div>
+
+      <div class="buttons-container">
+        <button onclick="addToCart()">Add to Cart</button>
+        <button onclick="buyNow()">Buy Now</button>
+      </div>
+      <div id="cart-message">Item added to cart!</div>
+
+      <button class="view-cart-button" onclick="viewCart()">View Cart</button>
+
+    </div>
+
+    <div class="images-column">
+      <h3>Select Product Type</h3>
+      <div class="image-selection">
+        <img src="https://via.placeholder.com/600x400" alt="Knitted Placemats" class="product-photo" data-type="Knitted Placemats">
+        <p>Knitted Placemats</p>
+      </div>
+      <div class="image-selection">
+        <img src="https://via.placeholder.com/600x400" alt="Decorative Coasters" class="product-photo" data-type="Decorative Coasters">
+        <p>Decorative Coasters</p>
+      </div>
+      <div class="image-selection">
+        <img src="https://via.placeholder.com/600x400" alt="Yarn Centerpieces" class="product-photo" data-type="Yarn Centerpieces">
+        <p>Yarn Centerpieces</p>
+      </div>
+    </div>
+  </section>
+
+  <a href="index.html" class="return-home-button">Return to Home</a>
+
+  <footer>
+    <p>&copy; 2025 Yarn & Charm. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>

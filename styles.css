@@ -1,0 +1,22 @@
+/* Ensure that dropdown menu is above the navbar */
+.dropdown {
+  display: none;  /* Make sure it's hidden initially */
+  position: absolute;
+  right: 30px;
+  top: 50px;
+  background-color: #FFB6C1;
+  min-width: 150px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 20;  /* Higher z-index to make sure it's on top */
+  opacity: 0; /* Start with hidden state */
+  pointer-events: none; /* Prevent interactions while hidden */
+  transition: opacity 0.3s ease, transform 0.3s ease-in-out;
+}
+
+.dropdown.show {
+  display: block; /* Make dropdown block when shown */
+  opacity: 1; /* Make it visible */
+  pointer-events: all; /* Enable interaction */
+  transform: translateY(10px); /* Dropdown animation */
+}
