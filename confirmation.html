@@ -202,13 +202,9 @@
         return;
       }
 
-      // Process checkout logic (example: send to backend or navigate)
-      alert("Proceeding to checkout...");
-
-      // Example: store recipient info (you can adjust based on how you handle backend)
-      localStorage.setItem("recipientDetails", JSON.stringify({ name, address, email }));
-
-      window.location.href = "checkout.html"; // Redirect to checkout page
+      // Process checkout and redirect
+      alert("Thank you for your submission! Redirecting to home page...");
+      window.location.href = "index.html"; // Redirect to index.html
     }
 
     function addMore() {
