@@ -58,6 +58,9 @@
       background-color: #fff;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
       border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .price {
@@ -73,9 +76,9 @@
     }
 
     .product-photo {
-      width: 90%;
-      height: auto;
-      object-fit: cover;
+      width: 100px; /* Set a fixed width */
+      height: 100px; /* Set a fixed height */
+      object-fit: cover; /* Maintain aspect ratio */
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       margin-bottom: 15px;
@@ -89,6 +92,7 @@
 
     .image-selection {
       margin-bottom: 10px;
+      text-align: center; /* Center the text under the image */
     }
 
     .quantity-container {
@@ -200,23 +204,23 @@
       padding: 12px 30px;
       font-size: 1.2rem;
       border: none;
-      border-radius: 50px; /* Soft round edges */
+      border-radius: 50px;
       text-align: center;
       text-decoration: none;
       cursor: pointer;
       width: 220px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Light shadow */
-      transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
     .return-home-button:hover {
-      background-color: #FF4D3A; /* Slightly darker for hover effect */
-      transform: scale(1.05); /* Slightly enlarge the button */
+      background-color: #FF4D3A;
+      transform: scale(1.05);
     }
 
     .return-home-button:active {
-      background-color: #FF3B2A; /* Darker shade on button click */
-      transform: scale(1); /* Reset scale on click */
+      background-color: #FF3B2A;
+      transform: scale(1);
     }
 
   </style>
@@ -238,14 +242,11 @@
 
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-      // Check if item already exists in the cart
       const existingItemIndex = cart.findIndex(cartItem => cartItem.name === item.name);
 
       if (existingItemIndex !== -1) {
-        // If item exists, update quantity
         cart[existingItemIndex].quantity += item.quantity;
       } else {
-        // If item doesn't exist, add it to the cart
         cart.push(item);
       }
 
@@ -269,12 +270,10 @@
       const selectedType = document.getElementById('product-type').value;
       const images = document.querySelectorAll('.product-photo');
       
-      // Remove the enlargement effect from all images
       images.forEach(img => {
         img.classList.remove('enlarged');
       });
 
-      // Find the matching image and add the enlarged effect
       const selectedImage = document.querySelector(`.product-photo[data-type="${selectedType}"]`);
       if (selectedImage) {
         selectedImage.classList.add('enlarged');
@@ -303,7 +302,7 @@
         <option value="">Select a product</option>
         <option value="Knitted Placemats">Random Keychain</option>
         <option value="Decorative Coasters">Animal shaped keychain</option>
-        <option value="Yarn Centerpieces">Fruits or Flower </option>
+        <option value="Y arn Centerpieces">Fruits or Flower</option>
       </select>
 
       <div class="quantity-container">
@@ -324,15 +323,15 @@
     <div class="images-column">
       <h3>Select Product Type</h3>
       <div class="image-selection">
-        <img src="keychain1.png">
+        <img src="keychain1.png" class="product-photo" data-type="Knitted Placemats">
         <p>Random Keychain</p>
       </div>
       <div class="image-selection">
-        <img src="keychain3.jpg">
+        <img src="keychain3.jpg" class="product-photo" data-type="Decorative Coasters">
         <p>Animal Shaped Keychain</p>
       </div>
       <div class="image-selection">
-        <img src="keychain2jpg">
+        <img src="keychain2.jpg" class="product-photo" data-type="Yarn Centerpieces">
         <p>Fruits/Flowers Keychain</p>
       </div>
     </div>
