@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Headwear | Yarn and Charm Knit Knot</title>
+  <title>Handcrafted Headwear | Yarn and Charm</title>
+
   <style>
     body {
       font-family: 'Arial', sans-serif;
@@ -57,6 +58,9 @@
       background-color: #fff;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
       border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .price {
@@ -72,9 +76,9 @@
     }
 
     .product-photo {
-      width: 50%;
-      height: auto;
-      object-fit: cover;
+      width: 100px; /* Set a fixed width */
+      height: 100px; /* Set a fixed height */
+      object-fit: cover; /* Maintain aspect ratio */
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       margin-bottom: 15px;
@@ -88,6 +92,7 @@
 
     .image-selection {
       margin-bottom: 10px;
+      text-align: center; /* Center the text under the image */
     }
 
     .quantity-container {
@@ -174,7 +179,8 @@
       margin-top: 20px;
       background-color: #f9f9f9;
       border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      box-shadow ```html
+      : 0 4px 12px rgba(0, 0, 0, 0.05);
     }
 
     h3 {
@@ -231,7 +237,7 @@
 
       const item = {
         name: productType,
-        price: "₱130", // Updated price
+        price: "₱130", // Price remains the same
         quantity: parseInt(quantity),
       };
 
@@ -292,7 +298,7 @@
   <section class="service-container">
     <div class="description-column">
       <h2>Custom Headwear</h2>
-      <div class="price">₱130</div> <!-- Updated price -->
+      <div class="price">₱130</div>
       <p class="description">
         Our hand-knitted headwear collection includes cozy beanies, chic slouchy hats, and stylish winter caps that will keep you warm in style. Whether you're looking for something simple or unique, we’ve got custom colors and designs available. Each item is carefully handcrafted using the finest yarn.
       </p>
@@ -301,11 +307,12 @@
       <select id="product-type" class="select-dropdown" onchange="updateImage()">
         <option value="">Select a product</option>
         <option value="Knitted Beanies">HeadBands</option>
-        <option value="Slouchy Winter Hats">flower Headband</option>
+        <option value="Slouchy Winter Hats">Flower Headband</option>
         <option value="Berets & Stylish Caps">Berets & Stylish Caps</option>
       </select>
 
       <div class="quantity-container">
+ ```html
         <label for="quantity" class="quantity-label">Quantity:</label>
         <input id="quantity" type="number" value="1" class="quantity-input" min="1">
       </div>
@@ -323,11 +330,11 @@
     <div class="images-column">
       <h3>Select Product Type</h3>
       <div class="image-selection">
-        <img src="472961812_468016412828663_4183640458472045481_n.jpg">
+        <img src="472961812_468016412828663_4183640458472045481_n.jpg" class="product-photo" data-type="Knitted Beanies">
         <p>HeadBands</p>
       </div>
       <div class="image-selection">
-        <img src="flowerheadband.jpg">
+        <img src="flowerheadband.jpg" class="product-photo" data-type="Slouchy Winter Hats">
         <p>Flower Headband</p>
       </div>
       <div class="image-selection">
