@@ -76,8 +76,9 @@
     }
 
     .product-photo {
-      width: 300px; /* Set a fixed width */
-      height: 300px; /* Set a fixed height */
+      width: 100%; /* Set width to 100% to make it responsive */
+      max-width: 300px; /* Set a maximum width for larger screens */
+      height: auto; /* Maintain aspect ratio */
       object-fit: cover; /* Maintain aspect ratio */
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -146,7 +147,7 @@
     }
 
     .view-cart-button:hover {
- background-color: #FF4D3A;
+      background-color: #FF4D3A;
     }
 
     footer {
@@ -204,23 +205,23 @@
       padding: 12px 30px;
       font-size: 1.2rem;
       border: none;
-      border-radius: 50px;
+      border-radius: 50px; /* Soft round edges */
       text-align: center;
       text-decoration: none;
       cursor: pointer;
       width: 220px;
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
-      transition: background-color 0.3s ease, transform 0.3s ease;
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1); /* Light shadow */
+      transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transitions */
     }
 
     .return-home-button:hover {
-      background-color: #FF4D3A;
-      transform: scale(1.05);
+      background-color: #FF4D3A; /* Slightly darker for hover effect */
+      transform: scale(1.05); /* Slightly enlarge the button */
     }
 
     .return-home-button:active {
-      background-color: #FF3B2A;
-      transform: scale(1);
+      background-color: #FF3B2A; /* Darker shade on button click */
+      transform: scale(1); /* Reset scale on click */
     }
 
   </style>
@@ -292,14 +293,13 @@
   <section class="service-container">
     <div class="description-column">
       <h2>Custom Yarn Products</h2>
-      <div class="price">₱550</div>
-      <p class="description">
+      <div class="price">₱550</div <p class="description">
         Discover our collection of handcrafted yarn items, including personalized bags, custom table décor, and custom plushies. Each item is carefully crafted with love, adding a unique touch to your home or gifting it to someone special.
       </p>
 
       <h3>Choose Your Product Type</h3>
       <select id="product-type" class="select-dropdown" onchange="updateImage()">
-        <option value="">Select a product </option>
+        <option value="">Select a product</option>
         <option value="Personalized Bags">Personalized Bags</option>
         <option value="Personalized Flower">Personalized Flower</option>
         <option value="Custom Plushies">Custom Plushies</option>
@@ -327,7 +327,7 @@
         <p>Personalized Bags</p>
       </div>
       <div class="image-selection">
-        <img src="cust2.jpg" class="product-photo" data-type="Custom Table Decor">
+        <img src="cust2.jpg" class="product-photo" data-type="Personalized Flower">
         <p>Personalized Flower</p>
       </div>
       <div class="image-selection">
