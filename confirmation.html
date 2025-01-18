@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart | Yarn & Charm Knit Knot</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #F7F7F7;
+      margin: 0;
+      color: #333;
+    }
+
+    header {
+      background-color: #FF6F61;
+      padding: 20px 40px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 2.5rem;
+      color: white;
+      font-weight: bold;
+    }
+
+    .cart-title {
+      font-size: 2.5rem;
+      color: #FF6F61;
+      margin-top: 40px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .cart-container {
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cart-item {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .item-name {
+      font-size: 1.2rem;
+      width: 40%;
+    }
+
+    .item-quantity {
+      font-size: 1.1rem;
+      width: 20%;
+    }
+
+    .item-price {
+      font-size: 1.3rem;
+      color: #333;
+      width: 30%;
+    }
+
+    .total-price {
+      font-size: 1.5rem;
+      color: #FF6F61;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .recipient-details {
+      background-color: #fff;
+      padding: 20px;
+      margin-top: 30px;
+      width: 100%;
+      max-width: 800px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      text-align: left;
+    }
+
+    .recipient-details input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    .checkout-button {
+      margin-top: 30px;
+      padding: 12px 30px;
+      background-color: #FF6F61;
+      color: white;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      width: 250px;
+      text-align: center;
+      display: block;
+      margin-bottom: 50px;
+    }
+
+    .checkout-button:hover {
+      background-color: #FF4D3A;
+    }
+
+    .add-more-button {
+      margin-top: 15px;
+      padding: 12px 30px;
+      background-color: #FF4D3A;
+      color: white;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      width: 250px;
+      text-align: center;
+    }
+
+    .add-more-button:hover {
+      background-color: #FF6F61;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Yarn and Charm Knit Knot</div>
+  </header>
+
+  <h1 class="cart-title">Your Cart</h1>
+
+  <!-- Cart items section -->
+  <section class="cart-container" id="cart-items">
+    <!-- Dynamically populated cart items go here -->
+  </section>
+
+  <!-- Total Price -->
+  <div class="total-price" id="total-price">
+    <!-- Dynamically updated total goes here -->
+  </div>
+
+  <!-- Recipient Details (editable fields for name, address, and email) -->
+  <div class="recipient-details" id="recipient-details">
+    <h3>Recipient Details</h3>
+    <input type="text" id="recipient-name" placeholder="Full Name" required />
+    <input type="text" id="recipient-address" placeholder="Address" required />
+    <input type="email" id="recipient-email" placeholder="Email" required />
+  </div>
+
+  <!-- Checkout and Add More buttons -->
+  <button class="checkout-button" onclick="checkout()">Proceed to Checkout</button>
+  <button class="add-more-button" onclick="addMore()">Add More Items</button>
+
+  <footer>
+    <p>&copy; 2025 Yarn & Charm Knit Knot. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    window.onload = function() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      const cartContainer = document.getElementById("cart-items");
+      const totalPriceElement = document.getElementById("total-price");
+
+      // Dynamically display cart items and calculate total price
+      let total = 0;
+      cart.forEach(item => {
+        const cartItem = document.createElement("div");
+        cartItem.className = "cart-item";
+        cartItem.innerHTML = `
+          <span class="item-name">${item.name}</span>
+          <span class="item-quantity">${item.quantity}</span>
+          <span class="item-price">₱${(item.price.replace('₱', '') * item.quantity).toFixed(2)}</span>
+        `;
+        cartContainer.appendChild(cartItem);
+        total += item.price.replace('₱', '') * item.quantity;
+      });
+
+      totalPriceElement.innerHTML = `Total: ₱${total.toFixed(2)}`;
+    };
+
+    function checkout() {
+      const name = document.getElementById("recipient-name").value;
+      const address = document.getElementById("recipient-address").value;
+      const email = document.getElementById("recipient-email").value;
+
+      if (!name || !address || !email) {
+        alert("Please fill in all the details!");
+        return;
+      }
+
+      // Process checkout logic (example: send to backend or navigate)
+      alert("Proceeding to checkout...");
+
+      // Example: store recipient info (you can adjust based on how you handle backend)
+      localStorage.setItem("recipientDetails", JSON.stringify({ name, address, email }));
+
+      window.location.href = "checkout.html"; // Redirect to checkout page
+    }
+
+    function addMore() {
+      // Redirect to homepage to add more items
+      window.location.href = "index.html"; // Update with your homepage URL
+    }
+  </script>
+
+</body>
+</html>

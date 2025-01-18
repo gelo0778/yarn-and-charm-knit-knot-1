@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart | Yarn & Charm Knit Knot</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #F7F7F7;
+      margin: 0;
+      color: #333;
+    }
+
+    header {
+      background-color: #FF6F61;
+      padding: 20px 40px;
+      text-align: center;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 2.5rem;
+      color: white;
+      font-weight: bold;
+    }
+
+    .cart-title {
+      font-size: 2.5rem;
+      color: #FF6F61;
+      margin-top: 40px;
+      text-align: center;
+      text-transform: uppercase;
+    }
+
+    .cart-container {
+      padding: 40px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .cart-item {
+      background-color: #fff;
+      padding: 20px;
+      margin-bottom: 20px;
+      width: 100%;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .item-name {
+      font-size: 1.2rem;
+      width: 40%;
+    }
+
+    .item-quantity {
+      font-size: 1.1rem;
+      width: 20%;
+    }
+
+    .item-price {
+      font-size: 1.3rem;
+      color: #333;
+      width: 30%;
+    }
+
+    .total-price {
+      font-size: 1.5rem;
+      color: #FF6F61;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    .checkout-button {
+      margin-top: 30px;
+      padding: 12px 30px;
+      background-color: #FF6F61;
+      color: white;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      width: 250px;
+      text-align: center;
+      display: block;
+      margin-bottom: 50px;
+    }
+
+    .checkout-button:hover {
+      background-color: #FF4D3A;
+    }
+
+    .clear-cart-button {
+      margin-top: 15px;
+      padding: 12px 30px;
+      background-color: #FF4D3A;
+      color: white;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      width: 250px;
+      text-align: center;
+    }
+
+    .clear-cart-button:hover {
+      background-color: #FF6F61;
+    }
+
+    .add-more-button {
+      margin-top: 15px;
+      padding: 12px 30px;
+      background-color: #FF4D3A;
+      color: white;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      width: 250px;
+      text-align: center;
+    }
+
+    .add-more-button:hover {
+      background-color: #FF6F61;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Yarn & Charm Knit Knot</div>
+  </header>
+
+  <h1 class="cart-title">Your Cart</h1>
+
+  <section class="cart-container" id="cart-items">
+    <!-- Cart items will be displayed here dynamically -->
+  </section>
+
+  <div class="total-price" id="total-price">
+    <!-- Total price will be displayed here dynamically -->
+  </div>
+
+  <button class="checkout-button" onclick="checkout()">Proceed to Checkout</button>
+  <button class="clear-cart-button" onclick="clearCart()">Clear Cart</button>
+  <button class="add-more-button" onclick="addMore()">Add More Items</button>
+
+  <footer>
+    <p>&copy; 2025 Yarn & Charm Knit Knot. All Rights Reserved.</p>
+  </footer>
+
+  <script>
+    // This function displays the cart content dynamically from localStorage
+    window.onload = function() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || []; // Retrieve cart data
+      const cartContainer = document.getElementById("cart-items");
+      const totalPriceElement = document.getElementById("total-price");
+      let total = 0;
+
+      // If cart is empty, show appropriate message
+      if (cart.length === 0) {
+        cartContainer.innerHTML = "<p>Your cart is empty!</p>";
+      } else {
+        cart.forEach(item => {
+          // Creating a cart item element dynamically
+          const cartItem = document.createElement("div");
+          cartItem.className = "cart-item";
+          cartItem.innerHTML = ` 
+            <span class="item-name">${item.name}</span>
+            <span class="item-quantity">${item.quantity}</span>
+            <span class="item-price">₱${(item.price.replace('₱', '') * item.quantity).toFixed(2)}</span>
+          `;
+          cartContainer.appendChild(cartItem); // Add item to the cart
+
+          // Calculate total price
+          total += parseFloat(item.price.replace('₱', '')) * item.quantity;
+        });
+
+        totalPriceElement.innerHTML = `Total: ₱${total.toFixed(2)}`; // Show total
+      }
+    };
+
+    function checkout() {
+      // Navigate to the checkout page (confirmation page)
+      window.location.href = "confirmation.html"; 
+    }
+
+    function clearCart() {
+      // Remove cart from localStorage and notify user
+      localStorage.removeItem("cart");
+      alert("Your cart has been cleared.");
+      window.location.reload(); // Reload page to update cart display
+    }
+
+    function addMore() {
+      // Redirect to homepage to add more items
+      window.location.href = "index.html"; // Update with your homepage URL
+    }
+  </script>
+
+</body>
+</html>
