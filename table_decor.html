@@ -58,6 +58,9 @@
       background-color: #fff;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
       border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .price {
@@ -73,9 +76,9 @@
     }
 
     .product-photo {
-      width: 90%;
-      height: auto;
-      object-fit: cover;
+      width: 100px; /* Set a fixed width */
+      height: 100px; /* Set a fixed height */
+      object-fit: cover; /* Maintain aspect ratio */
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       margin-bottom: 15px;
@@ -89,6 +92,7 @@
 
     .image-selection {
       margin-bottom: 10px;
+      text-align: center; /* Center the text under the image */
     }
 
     .quantity-container {
@@ -299,11 +303,11 @@
       </p>
 
       <h3>Choose Your Product Type</h3>
-      <select id="product-type" class="select-dropdown" onchange="updateImage()">
+      <select id="product-type" class=" select-dropdown" onchange="updateImage()">
         <option value="">Select a product</option>
-        <option value="Knitted Placemats">Surpries Flower</option>
+        <option value="Knitted Placemats">Surprise Flower</option>
         <option value="Decorative Coasters">Simple Flower</option>
-        <option value="Yarn Centerpieces">Special Order(Price will vary)</option>
+        <option value="Yarn Centerpieces">Special Order (Price will vary)</option>
       </select>
 
       <div class="quantity-container">
@@ -324,15 +328,15 @@
     <div class="images-column">
       <h3>Select Product Type</h3>
       <div class="image-selection">
-        <img src="flower3" alt="Knitted Placemats" class="product-photo" data-type="Knitted Placemats">
-        <p>Surprise flower</p>
+        <img src="flower3.jpg" alt="Knitted Placemats" class="product-photo" data-type="Knitted Placemats">
+        <p>Surprise Flower</p>
       </div>
       <div class="image-selection">
-        <img src="flower1" alt="Decorative Coasters" class="product-photo" data-type="Decorative Coasters">
+        <img src="flower1.jpg" alt="Decorative Coasters" class="product-photo" data-type="Decorative Coasters">
         <p>Simple Flower</p>
       </div>
       <div class="image-selection">
-        <img src="Flower2" alt="Yarn Centerpieces" class="product-photo" data-type="Yarn Centerpieces">
+        <img src="flower2.jpg" alt="Yarn Centerpieces" class="product-photo" data-type="Yarn Centerpieces">
         <p>Special Flower</p>
       </div>
     </div>
