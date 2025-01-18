@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search - Yarn & Charm</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      background-color: #F0F8FF;
+      color: black;
+    }
+    
+    header {
+      background-color: #FFB6C1;
+      padding: 15px 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: black;
+    }
+
+    .search-container {
+      padding: 20px;
+      text-align: center;
+    }
+
+    .search-input {
+      padding: 10px;
+      width: 80%;
+      max-width: 500px;
+      font-size: 1.1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 10px;
+    }
+
+    .search-button {
+      padding: 10px 20px;
+      background-color: #FF6F61;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 1.1rem;
+      border-radius: 5px;
+    }
+
+    .search-button:hover {
+      background-color: #FFB6C1;
+    }
+
+    .no-results {
+      color: #FF6F61;
+      font-size: 1.2rem;
+    }
+
+    footer {
+      background-color: #FFB6C1;
+      padding: 10px;
+      text-align: center;
+      box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+    .home-button {
+      padding: 10px 20px;
+      background-color: #FF6F61;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 1rem;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    .home-button:hover {
+      background-color: #FFA07A;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Yarn and Charm Knit Knot</div>
+  </header>
+
+  <section class="search-container">
+    <h2>Search for Crochet Products</h2>
+    <input class="search-input" type="text" placeholder="Search for headwear, bags, accessories, etc." id="searchInput">
+    <button class="search-button" onclick="searchProduct()">Search</button>
+
+    <p class="no-results" id="noResults" style="display: none;">Sorry, no products found matching your search.</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Yarn & Charm Knit Knot. All Rights Reserved.</p>
+    <a href="index.html" class="home-button">Return Home</a> <!-- Added Return Home button -->
+  </footer>
+
+  <script>
+    function searchProduct() {
+      const searchInput = document.getElementById('searchInput').value.toLowerCase();
+      const noResults = document.getElementById('noResults');
+
+      if (!searchInput) {
+        noResults.style.display = 'none';
+        return;
+      }
+
+      // Simulate product search logic (this is just for demonstration)
+      const availableProducts = ['headwear', 'accessories', 'bags', 'table decor', 'mini plushies', 'special order'];
+
+      if (availableProducts.some(product => product.includes(searchInput))) {
+        noResults.style.display = 'none';
+        alert("Search Results: Found matching products.");
+        // Display results or redirect to results page here
+      } else {
+        noResults.style.display = 'block';
+      }
+    }
+  </script>
+
+</body>
+</html>
