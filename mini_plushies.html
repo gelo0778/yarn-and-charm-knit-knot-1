@@ -58,6 +58,9 @@
       background-color: #fff;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
       border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .price {
@@ -73,9 +76,9 @@
     }
 
     .product-photo {
-      width: 90%;
-      height: auto;
-      object-fit: cover;
+      width: 100px; /* Set a fixed width */
+      height: 100px; /* Set a fixed height */
+      object-fit: cover; /* Maintain aspect ratio */
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
       margin-bottom: 15px;
@@ -89,6 +92,7 @@
 
     .image-selection {
       margin-bottom: 10px;
+      text-align: center; /* Center the text under the image */
     }
 
     .quantity-container {
@@ -302,8 +306,8 @@
       <select id="product-type" class="select-dropdown" onchange="updateImage()">
         <option value="">Select a product</option>
         <option value="Mini Teddy Bears">Mini Teddy Bears</option>
-        <option value="Cuddly Animal Friends">Emoting Plushies</option>
-        <option value="Personalized Plush Toys">Custom Made</option>
+        <option value="Cuddly Animal Friends">Cuddly Animal Friends</option>
+        <option value="Personalized Plush Toys">Personalized Plush Toys</option>
       </select>
 
       <div class="quantity-container">
@@ -324,21 +328,21 @@
     <div class="images-column">
       <h3>Select Product Type</h3>
       <div class="image-selection">
-        <img src="plush2.png">
+        <img src="plush1.jpg" class="product-photo" data-type="Mini Teddy Bears">
         <p>Mini Teddy Bears</p>
       </div>
       <div class="image-selection">
-        <img src="plush1.jpg">
-        <p>Emoting Plushies</p>
+        <img src="plush2.jpg" class="product-photo" data-type="Cuddly Animal Friends">
+        <p>Cuddly Animal Friends</p>
       </div>
       <div class="image-selection">
-        <img src="https://via.placeholder.com/600x400" alt="Personalized Plush Toys" class="product-photo" data-type="Personalized Plush Toys">
+        <img src="plush3.jpg" class="product-photo" data-type="Personalized Plush Toys">
         <p>Personalized Plush Toys</p>
       </div>
     </div>
   </section>
 
-  <a href="index.html" class="return-home-button">Return to Home</a>
+  <a href="index.html" class="return -home-button">Return to Home</a>
 
   <footer>
     <p>&copy; 2025 Yarn & Charm. All Rights Reserved.</p>
