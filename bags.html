@@ -150,7 +150,7 @@
     }
 
     footer {
- background-color: #FF6F61;
+      background-color: #FF6F61;
       color: white;
       text-align: center;
       padding: 15px;
@@ -226,7 +226,7 @@
   </style>
   <script>
     function addToCart() {
-      const quantity = document.getElementById("quantity").value;
+      const quantity = document.get ElementById("quantity").value;
       const productType = document.getElementById("product-type").value;
 
       if (!productType) {
@@ -242,14 +242,11 @@
 
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-      // Check if item already exists in the cart
       const existingItemIndex = cart.findIndex(cartItem => cartItem.name === item.name);
 
       if (existingItemIndex !== -1) {
-        // If item exists, update quantity
         cart[existingItemIndex].quantity += item.quantity;
       } else {
-        // If item doesn't exist, add it to the cart
         cart.push(item);
       }
 
@@ -273,12 +270,10 @@
       const selectedType = document.getElementById('product-type').value;
       const images = document.querySelectorAll('.product-photo');
       
-      // Remove the enlargement effect from all images
       images.forEach(img => {
         img.classList.remove('enlarged');
       });
 
-      // Find the matching image and add the enlarged effect
       const selectedImage = document.querySelector(`.product-photo[data-type="${selectedType}"]`);
       if (selectedImage) {
         selectedImage.classList.add('enlarged');
@@ -331,7 +326,6 @@
         <img src="bags.jpg" class="product-photo" data-type="Clutches">
         <p>Tote Bags</p>
       </div>
-     
     </div>
   </section>
 
