@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Handcrafted Yarn Items | Yarn and Charm</title>
+  <title>Handcrafted Plush Toys | Yarn and Charm</title>
 
   <style>
     body {
@@ -245,7 +245,7 @@
 
       const item = {
         name: productType,
-        price: "₱550(Price will depending on the order)",
+        price: "₱550",
         quantity: parseInt(quantity),
       };
 
@@ -306,6 +306,7 @@
         Discover our collection of handcrafted yarn items, including personalized bags, custom table décor, and custom plushies. Each item is carefully crafted with love, adding a unique touch to your home or gifting it to someone special.
       </p>
 
+
       <h3>Choose Your Product Type</h3>
       <select id="product-type" class="select-dropdown" onchange="updateImage()">
         <option value="">Select a product</option>
@@ -313,6 +314,7 @@
         <option value="Personalized Flower">Personalized Flower</option>
         <option value="Custom Plushies">Custom Plushies</option>
       </select>
+
 
       <div class="quantity-container">
         <label for="quantity" class="quantity-label">Quantity:</label>
@@ -328,8 +330,7 @@
       <button class="view-cart-button" onclick="viewCart()">View Cart</button>
 
     </div>
-
-    <div class="images-column">
+ <div class="images-column">
       <h3>Select Product Type</h3>
       <div class="image-selection">
         <img src="cust1.jpg" class="product-photo" data-type="Personalized Bags">
@@ -345,7 +346,6 @@
       </div>
     </div>
   </section>
-
   <a href="index.html" class="return-home-button">Return to Home</a>
 
   <footer>
