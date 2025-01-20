@@ -245,17 +245,20 @@
 
       const item = {
         name: productType,
-        price: "₱550(Price will depending on the order)",
+        price: "₱100",
         quantity: parseInt(quantity),
       };
 
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
+      // Check if item already exists in the cart
       const existingItemIndex = cart.findIndex(cartItem => cartItem.name === item.name);
 
       if (existingItemIndex !== -1) {
+        // If item exists, update quantity
         cart[existingItemIndex].quantity += item.quantity;
       } else {
+        // If item doesn't exist, add it to the cart
         cart.push(item);
       }
 
@@ -279,10 +282,12 @@
       const selectedType = document.getElementById('product-type').value;
       const images = document.querySelectorAll('.product-photo');
       
+      // Remove the enlargement effect from all images
       images.forEach(img => {
         img.classList.remove('enlarged');
       });
 
+      // Find the matching image and add the enlarged effect
       const selectedImage = document.querySelector(`.product-photo[data-type="${selectedType}"]`);
       if (selectedImage) {
         selectedImage.classList.add('enlarged');
@@ -303,10 +308,11 @@
       <h2>Custom Yarn Products</h2>
       <div class="price">₱100</div>
       <p class="description">
-        Discover our collection of handcrafted yarn items, including personalized bags, custom table décor, and custom plushies. Each item is carefully crafted with love, adding a unique touch to your home or gifting it to someone special.
+        Discover our collection of handcrafted yarn items, keychains. Each item is carefully crafted with love, adding a unique touch to your home.
+
       </p>
 
-      <h3>Choose Your Product Type</h3>
+       <h3>Choose Your Product Type</h3>
       <select id="product-type" class="select-dropdown" onchange="updateImage()">
         <option value="">Select a product</option>
         <option value="Random Keychain">Random Keychain</option>
@@ -329,7 +335,13 @@
 
     </div>
 
-<div class="images-column">
+    <div class="images-column">
+      <h3>Select Product Type</h3>
+      <div class="image-selection">
+        <img src="surprise.jpg" alt="Surprise Flower" class="product-photo" data-type="Surprise Flower">
+        <p>Surprise Flower</p>
+      </div>
+      <div class="images-column">
       <h3>Select Product Type</h3>
       <div class="image-selection">
         <img src="keychain1.jpg" class="product-photo" data-type="Knitted Placemats">
