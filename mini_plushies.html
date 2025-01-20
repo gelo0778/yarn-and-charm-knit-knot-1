@@ -15,7 +15,7 @@
 
     header {
       background-color: #FF6F61;
-      padding: 20px 40px;
+      padding: 20px;
       text-align: center;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
@@ -36,24 +36,31 @@
 
     .service-container {
       display: flex;
-      justify-content: space-between;
+      flex-direction: column; /* Stack items vertically on small screens */
       margin: 40px 20px;
-      padding: 20px 40px;
+      padding: 20px;
       background-color: #fff;
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
       border-radius: 10px;
     }
 
+    @media (min-width: 768px) {
+      .service-container {
+        flex-direction: row; /* Side by side on larger screens */
+      }
+    }
+
     .description-column {
-      width: 45%;
+      flex: 1; /* Allow the description column to grow */
       padding: 20px;
       background-color: #fff;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
       border-radius: 8px;
+      margin-right: 20px; /* Add margin to the right */
     }
 
     .images-column {
-      width: 45%;
+      flex: 1; /* Allow the images column to grow */
       padding: 20px;
       background-color: #fff;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
@@ -76,8 +83,9 @@
     }
 
     .product-photo {
-      width: 300px; /* Set a fixed width */
-      height: 300px; /* Set a fixed height */
+      width: 100%; /* Set width to 100% for responsiveness */
+      max-width: 300px; /* Set a maximum width for larger screens */
+      height: auto; /* Maintain aspect ratio */
       object-fit: cover; /* Maintain aspect ratio */
       border-radius: 10px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -128,6 +136,7 @@
       cursor: pointer;
       font-size: 1rem;
       transition: background-color 0.3s ease;
+      flex: 1; /* Allow buttons to grow equally */
     }
 
     button:hover {
@@ -242,14 +251,11 @@
 
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-      // Check if item already exists in the cart
       const existingItemIndex = cart.findIndex(cartItem => cartItem.name === item.name);
 
       if (existingItemIndex !== -1) {
-        // If item exists, update quantity
         cart[existingItemIndex].quantity += item.quantity;
       } else {
-        // If item doesn't exist, add it to the cart
         cart.push(item);
       }
 
@@ -273,12 +279,10 @@
       const selectedType = document.getElementById('product-type').value;
       const images = document.querySelectorAll('.product-photo');
       
-      // Remove the enlargement effect from all images
       images.forEach(img => {
         img.classList.remove('enlarged');
       });
 
-      // Find the matching image and add the enlarged effect
       const selectedImage = document.querySelector(`.product-photo[data-type="${selectedType}"]`);
       if (selectedImage) {
         selectedImage.classList.add('enlarged');
@@ -307,7 +311,7 @@
         <option value="">Select a product</option>
         <option value="Mini Teddy Bears">Mini Teddy Bears</option>
         <option value="Emoting Plushies">Cuddly Animal Friends</option>
-       
+        <option value="Personalized Plush Toys">Personalized Plush Toys</option>
       </select>
 
       <div class="quantity-container">
@@ -328,14 +332,17 @@
     <div class="images-column">
       <h3>Select Product Type</h3>
       <div class="image-selection">
-        <img src="plush2.jpg" class="product-photo" data-type="Mini Teddy Bears">
+        <img src="plush1.jpg" class="product-photo" data-type="Mini Teddy Bears">
         <p>Mini Teddy Bears</p>
       </div>
       <div class="image-selection">
-        <img src="plush1.jpg" class="product-photo" data-type="Cuddly Animal Friends">
-        <p>Emoting Plushies</p>
+        <img src="plush2.jpg" class="product-photo" data-type="Cuddly Animal Friends">
+        <p>Cuddly Animal Friends</p>
       </div>
-
+      <div class="image-selection">
+        <img src="plush3.jpg" class="product-photo" data-type="Personalized Plush Toys">
+        <p>Personalized Plush Toys</p>
+      </div>
     </div>
   </section>
 
