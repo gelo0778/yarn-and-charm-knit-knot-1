@@ -245,20 +245,17 @@
 
       const item = {
         name: productType,
-        price: "₱130",
+        price: "₱550(Price will depending on the order)",
         quantity: parseInt(quantity),
       };
 
       let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-      // Check if item already exists in the cart
       const existingItemIndex = cart.findIndex(cartItem => cartItem.name === item.name);
 
       if (existingItemIndex !== -1) {
-        // If item exists, update quantity
         cart[existingItemIndex].quantity += item.quantity;
       } else {
-        // If item doesn't exist, add it to the cart
         cart.push(item);
       }
 
@@ -282,12 +279,10 @@
       const selectedType = document.getElementById('product-type').value;
       const images = document.querySelectorAll('.product-photo');
       
-      // Remove the enlargement effect from all images
       images.forEach(img => {
         img.classList.remove('enlarged');
       });
 
-      // Find the matching image and add the enlarged effect
       const selectedImage = document.querySelector(`.product-photo[data-type="${selectedType}"]`);
       if (selectedImage) {
         selectedImage.classList.add('enlarged');
@@ -306,17 +301,17 @@
   <section class="service-container">
     <div class="description-column">
       <h2>Custom Yarn Products</h2>
-      <div class="price">₱130</div>
+      <div class="price">₱550</div>
       <p class="description">
-        Discover our collection of handcrafted yarn items, including cozy placemats, decorative coasters, and beautiful yarn centerpieces. Each item is carefully crafted with love, adding a unique touch to your home.
+        Discover our collection of handcrafted yarn items, including personalized bags, custom table décor, and custom plushies. Each item is carefully crafted with love, adding a unique touch to your home or gifting it to someone special.
       </p>
 
       <h3>Choose Your Product Type</h3>
       <select id="product-type" class="select-dropdown" onchange="updateImage()">
         <option value="">Select a product</option>
-        <option value="Surprise Flower">Surprise Flower</option>
-        <option value="Simple Flower">Simple Flower</option>
-        <option value="Special Order">Special Order (Price will vary)</option>
+        <option value="Personalized Bags">Personalized Bags</option>
+        <option value="Personalized Flower">Personalized Flower</option>
+        <option value="Custom Plushies">Custom Plushies</option>
       </select>
 
       <div class="quantity-container">
@@ -337,16 +332,16 @@
     <div class="images-column">
       <h3>Select Product Type</h3>
       <div class="image-selection">
-        <img src="surprise.jpg" alt="Surprise Flower" class="product-photo" data-type="Surprise Flower">
-        <p>Surprise Flower</p>
+        <img src="cust1.jpg" class="product-photo" data-type="Personalized Bags">
+        <p>Personalized Bags</p>
       </div>
       <div class="image-selection">
-        <img src="simpleflower1.jpg" alt="Simple Flower" class="product-photo" data-type="Simple Flower">
-        <p>Simple Flower</p>
+        <img src="cust2.jpg" class="product-photo" data-type="Personalized Flower">
+        <p>Personalized Flower</p>
       </div>
       <div class="image-selection">
-        <img src="flower2.jpg" alt="Special Order" class="product-photo" data-type="Special Order">
-        <p>Special Order</p>
+        <img src="cust3.jpg" class="product-photo" data-type="Custom Plushies">
+        <p>Custom Plushies</p>
       </div>
     </div>
   </section>
